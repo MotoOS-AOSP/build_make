@@ -53,8 +53,8 @@ function build_build_var_cache()
 {
     local T=$(gettop)
     # Grep out the variable names from the script.
-    cached_vars=(`cat $T/build/envsetup.sh $T/vendor/blaze/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/_get_build_var_cached/) print $(i+1)}' | sort -u | tr '\n' ' '`)
-    cached_abs_vars=(`cat $T/build/envsetup.sh $T/vendor/blaze/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/_get_abs_build_var_cached/) print $(i+1)}' | sort -u | tr '\n' ' '`)
+    cached_vars=(`cat $T/build/envsetup.sh $T/vendor/moto/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/_get_build_var_cached/) print $(i+1)}' | sort -u | tr '\n' ' '`)
+    cached_abs_vars=(`cat $T/build/envsetup.sh $T/vendor/moto/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/_get_abs_build_var_cached/) print $(i+1)}' | sort -u | tr '\n' ' '`)
     # Call the build system to dump the "<val>=<value>" pairs as a shell script.
     build_dicts_script=`\builtin cd $T; build/soong/soong_ui.bash --dumpvars-mode \
                         --vars="${cached_vars[*]}" \
@@ -500,12 +500,12 @@ function lunch()
 
 function _lunch_meat()
 {
-    if (echo -n $1 | grep -q -e "^blaze_") ; then
-        BLAZE_BUILD=$(echo -n $1 | sed -e 's/^blaze_//g')
+    if (echo -n $1 | grep -q -e "^moto_") ; then
+        MOTO_BUILD=$(echo -n $1 | sed -e 's/^moto_//g')
     else
-        BLAZE_BUILD=
+        MOTO_BUILD=
     fi
-    export BLAZE_BUILD
+    export MOTO_BUILD
 
     local product=$1
     local release=$2
@@ -557,7 +557,7 @@ function _lunch_meat()
     fi
 
     echo "";
-    cat $(gettop)/build/make/blaze_ascii_logo;
+    cat $(gettop)/build/make/moto_ascii_logo;
     echo"";
 }
 
@@ -1210,4 +1210,4 @@ addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/blaze/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/moto/build/envsetup.sh

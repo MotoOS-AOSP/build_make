@@ -479,7 +479,7 @@ PRODUCT_PACKAGES_DEBUG := \
     unwind_reg_info \
     unwind_symbols \
 
-ifeq ($(BLAZE_BUILD),)
+ifeq ($(MOTO_BUILD),)
 PRODUCT_PACKAGES_DEBUG += \
     su
 endif

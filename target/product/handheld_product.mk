@@ -31,7 +31,7 @@ PRODUCT_PACKAGES += \
     SettingsIntelligence \
     frameworks-base-overlays
 
-ifeq ($(BLAZE_BUILD),)
+ifeq ($(MOTO_BUILD),)
 PRODUCT_PACKAGES += \
     Camera2 \
     LatinIME
