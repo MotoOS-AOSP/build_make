@@ -220,26 +220,26 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   version = target_info.GetBuildProp("ro.moto.version")
   maintainer = target_info.GetBuildProp("ro.moto.maintainer")
 
-if target_info.GetBuildProp("ro.product.model") is not None:
+  if target_info.GetBuildProp("ro.product.model") is not None:
     model = target_info.GetBuildProp("ro.product.model")
     script.Print("***********************************************");
-    script.Print("             MotoOS for %s" %(model));
-    script.Print("***********************************************");
-    script.Print("   VERSION: %s" %(version));
-    script.Print("   MANTENIDO POR: %s"%(maintainer));
-    script.Print("   COMPILADO EN: %s"%(date));
-    script.Print("***********************************************");
-else:
-    name = target_info.GetBuildProp("ro.product.name");
-    script.Print("***********************************************");
-    script.Print("             MotoOS for %s"%(name));
+    script.Print("               MotoOS for %s"%(model));
     script.Print("***********************************************");
     script.Print("   VERSION: %s"%(version));
-    script.Print("   MANTENIDO POR: %s"%(maintainer));
-    script.Print("   COMPILADO EN: %s"%(date));
+    script.Print("   MAINTAINED BY: %s"%(maintainer));
+    script.Print("   COMPILED ON: %s"%(date));
+    script.Print("***********************************************");
+  else:
+    name = target_info.GetBuildProp("ro.product.name")
+    script.Print("***********************************************");
+    script.Print("           MotoOS for %s"%(name));
+    script.Print("***********************************************");
+    script.Print("   VERSION: %s"%(version));
+    script.Print("   MAINTAINED BY: %s"%(maintainer));
+    script.Print("   COMPILED ON: %s"%(date));
     script.Print("***********************************************");
 
-device_specific.FullOTA_InstallBegin()
+  device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
   script.UnpackPackageDir("install", "/tmp/install")
