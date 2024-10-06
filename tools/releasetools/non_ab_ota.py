@@ -222,22 +222,22 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
 if target_info.GetBuildProp("ro.product.model") is not None:
     model = target_info.GetBuildProp("ro.product.model")
-    script.Print("***********************************************")
-    script.Print("             MotoOS for %s" % (model))
-    script.Print("***********************************************")
-    script.Print("   VERSION: %s" % (version))
-    script.Print("   MANTENIDO POR: %s" % (maintainer))
-    script.Print("   COMPILADO EN: %s" % (date))
-    script.Print("***********************************************")
+    script.Print("***********************************************");
+    script.Print("             MotoOS for %s" %(model));
+    script.Print("***********************************************");
+    script.Print("   VERSION: %s" %(version));
+    script.Print("   MANTENIDO POR: %s"%(maintainer));
+    script.Print("   COMPILADO EN: %s"%(date));
+    script.Print("***********************************************");
 else:
-    name = target_info.GetBuildProp("ro.product.name")
-    script.Print("***********************************************")
-    script.Print("             MotoOS for %s" % (name))
-    script.Print("***********************************************")
-    script.Print("   VERSION: %s" % (version))
-    script.Print("   MANTENIDO POR: %s" % (maintainer))
-    script.Print("   COMPILADO EN: %s" % (date))
-    script.Print("***********************************************")
+    name = target_info.GetBuildProp("ro.product.name");
+    script.Print("***********************************************");
+    script.Print("             MotoOS for %s"%(name));
+    script.Print("***********************************************");
+    script.Print("   VERSION: %s"%(version));
+    script.Print("   MANTENIDO POR: %s"%(maintainer));
+    script.Print("   COMPILADO EN: %s"%(date));
+    script.Print("***********************************************");
 
 device_specific.FullOTA_InstallBegin()
 
